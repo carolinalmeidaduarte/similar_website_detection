@@ -1,0 +1,8 @@
+#DATA
+data_directory: data/
+raw_data: data/raw/raw_domain_list.csv
+processed_data: data/processed/processed_data.csv
+log_data: logs/make_data_log.log
+multiprocess_tasks: 5
+driver_wait_timeout: 10
+chromedriver_path: /Users/carolinaduarte/.wdm/drivers/chromedriver/mac64/104.0.5112.79/chromedriver
