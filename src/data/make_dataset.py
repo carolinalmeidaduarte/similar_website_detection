@@ -7,19 +7,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import datetime
 import time
-import logging
-import yaml
-
-# folder to load config file
-CONFIG_FILE = "configuration.yaml"
-
-# load yaml configuration file
-def get_config_parameter(parameter):
-    with open(CONFIG_FILE) as file:
-        config = yaml.safe_load(file)
-
-    return config[parameter]
-
+from src.utils.utils import get_logger, get_config_parameter
 
 def get_driver():
     options = webdriver.ChromeOptions()
@@ -51,7 +39,7 @@ def get_tags(html, domain):
     return tags
 
 def process_html(domain):
-    logger = logging.getLogger(__name__)
+    logger = get_logger(__name__, "log_data")
 
     # get html data from domain
     driver = get_driver()
@@ -72,16 +60,10 @@ def process_html(domain):
     return tags
 
 
-
-log_fmt = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-logging.basicConfig(filename=get_config_parameter("log_data"),
-                    format=log_fmt, level=logging.INFO)
-
-
 if __name__ == '__main__':
     start_time = datetime.datetime.now()
 
-    logger = logging.getLogger(__name__)
+    logger = get_logger(__name__, "log_data")
 
     # get list of domains to scrape from raw data
     domains = pd.read_csv("/Users/carolinaduarte/Documents/personal_projects/similar_website_detection/data/raw/raw_domain_list.csv", index_col=False)["domain"]
