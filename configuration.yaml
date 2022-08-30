@@ -6,3 +6,5 @@ log_data: logs/make_data_log.log
 multiprocess_tasks: 5
 driver_wait_timeout: 10
 chromedriver_path: /Users/carolinaduarte/.wdm/drivers/chromedriver/mac64/104.0.5112.79/chromedriver
+max_distance_between_similar_sites: 0.04
+min_number_similar_sites: 5

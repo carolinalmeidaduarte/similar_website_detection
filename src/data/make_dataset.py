@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import datetime
 import time
-from src.utils.utils import get_logger, get_config_parameter
+from src.utils.utils import get_logger, get_config_parameter, get_path_to_file
 
 def get_driver():
     options = webdriver.ChromeOptions()
@@ -66,7 +66,7 @@ if __name__ == '__main__':
     logger = get_logger(__name__, "log_data")
 
     # get list of domains to scrape from raw data
-    domains = pd.read_csv("/Users/carolinaduarte/Documents/personal_projects/similar_website_detection/data/raw/raw_domain_list.csv", index_col=False)["domain"]
+    domains = pd.read_csv(get_path_to_file(get_config_parameter("raw_data")), index_col=False)["domain"]
 
     logger.info("Processing {} domains.".format(len(domains)))
 
@@ -79,4 +79,4 @@ if __name__ == '__main__':
     pool.join()
 
     # write to output file
-    pd.DataFrame(outputs).to_csv(get_config_parameter("processed_data"))
+    pd.DataFrame(outputs).to_csv(get_path_to_file(get_config_parameter("processed_data")))
