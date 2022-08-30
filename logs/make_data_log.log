@@ -1,0 +1,12 @@
+2022-08-27 15:10:52,676 - __main__ - INFO - Processing 2 domains.
+2022-08-29 16:57:53,320 - __main__ - INFO - Processing 2 domains.
+2022-08-30 17:50:51,448 - __main__ - INFO - Processing 2 domains.
+2022-08-30 17:52:53,476 - __main__ - INFO - Processing 2 domains.
+2022-08-30 17:56:59,817 - __main__ - INFO - Processing 2 domains.
+2022-08-30 21:36:47,982 - __main__ - INFO -  training took: 54.851653
+2022-08-30 21:44:46,815 - __main__ - INFO -  training took: 62.623992
+2022-08-30 21:54:26,453 - __main__ - INFO -  training took: 61.946767
+2022-08-30 21:58:53,448 - __main__ - INFO -  training took: ['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_is_leaf', 'dist_fn', 'get_all_in_range', 'get_n_nearest_neighbors', 'get_nearest_neighbor', 'left', 'left_max', 'left_min', 'right', 'right_max', 'right_min', 'vp']
+2022-08-30 22:00:00,331 - __main__ - INFO -  training took: 70.274387
+2022-08-30 22:05:32,303 - __main__ - INFO -  training took: ['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__slotnames__', '__str__', '__subclasshook__', '__weakref__', '_is_leaf', 'dist_fn', 'get_all_in_range', 'get_n_nearest_neighbors', 'get_nearest_neighbor', 'left', 'left_max', 'left_min', 'right', 'right_max', 'right_min', 'vp']
+2022-08-30 22:06:33,392 - __main__ - INFO -  training took: 64.431033
