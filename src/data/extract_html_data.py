@@ -3,11 +3,12 @@ from multiprocessing import Pool
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from collections import Counter
+from google.cloud import storage
 from bs4 import BeautifulSoup
 import pandas as pd
 import datetime
 import time
-from src.utils.utils import get_logger, get_config_parameter, get_path_to_file
+from src.utils.utils import *
 
 def get_driver():
     options = webdriver.ChromeOptions()
@@ -38,6 +39,18 @@ def get_tags(html, domain):
 
     return tags
 
+
+def save_html_to_file(html, domain):
+    bucket = get_storage_bucket()
+    blob = bucket.blob(domain + ".html")
+    try:
+        response = blob.upload_from_string(html)
+    except Exception as e:
+        response = "failed to save file to gcs"
+
+    return response
+
+
 def process_html(domain):
     logger = get_logger(__name__, "log_data")
 
@@ -48,6 +61,7 @@ def process_html(domain):
         driver.get("http://" + domain)
         time.sleep(5)
         html = driver.page_source.encode('utf-8')
+        save_html_to_file(html, domain)
         tags = get_tags(html, domain)
     except Exception:
         logger.error("-failed to get data for {}".format(domain))
@@ -66,7 +80,7 @@ if __name__ == '__main__':
     logger = get_logger(__name__, "log_data")
 
     # get list of domains to scrape from raw data
-    domains = pd.read_csv(get_path_to_file(get_config_parameter("raw_data")), index_col=False)["domain"]
+    domains = pd.read_csv(get_path_to_file(get_config_parameter("target_domains")), index_col=False)["domain"]
 
     logger.info("Processing {} domains.".format(len(domains)))
 
@@ -79,4 +93,4 @@ if __name__ == '__main__':
     pool.join()
 
     # write to output file
-    pd.DataFrame(outputs).to_csv(get_path_to_file(get_config_parameter("processed_data")))
+    pd.DataFrame(outputs).to_csv(get_path_to_file(get_config_parameter("raw_data")))

@@ -1,6 +1,7 @@
 import yaml
 import logging
 import os
+from google.cloud import storage
 
 # folder to load config file
 CONFIG_FILE = "configuration.yaml"
@@ -26,3 +27,8 @@ def get_logger(source_function, log_name):
                         format=log_fmt, level=logging.INFO)
 
     return logging.getLogger(source_function)
+
+def get_storage_bucket():
+    storage_client = storage.Client()
+    bucket = storage_client.bucket(get_config_parameter("google_cloud_storage_bucket"))
+    return bucket
