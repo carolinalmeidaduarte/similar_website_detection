@@ -1,15 +1,23 @@
-#DATA
+# DATA STORAGE
 data_directory: data/
 target_domains: data/raw/target_domains.csv
 raw_data: data/raw/raw_data.csv
 processed_data: data/processed/processed_data.csv
 scored_data: data/scored/similar_groups.csv
-log_data: logs/make_data_log.log
+
+# DATA SCRAPING PARAMETERS
 multiprocess_tasks: 5
 driver_wait_timeout: 10
 chromedriver_path: /Users/carolinaduarte/.wdm/drivers/chromedriver/mac64/104.0.5112.79/chromedriver
+google_cloud_storage_bucket: site_html_data_ops
+
+# LOGS
+log_data: logs/make_data_log.log
+
+# MODEL PARAMETERS
+max_distance_between_similar_sites: 0.04
+min_number_similar_sites: 4
+
+# OTHER FILES STORAGE
 vp_tree_model: models/vp_tree.pkl
 dbscan_model: models/dbscan.pkl
-max_distance_between_similar_sites: 0.04
-min_number_similar_sites: 10
-google_cloud_storage_bucket: site_html_data_ops
